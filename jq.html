@@ -1,0 +1,302 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+	
+	<script>
+		$(document).ready(function(){
+
+			$(".modal").hide();
+			$(".box").hide();
+			$(".closeButton").hide();
+			
+			
+			$("#open2").click(function()
+							
+			{				
+				$(".sideBar").css("display","block");
+	            $(".sideBar").animate({left: '70%'});
+				//$(".bodyClass").animate({left: '-30%'});  //uncomment to push the whole page left when the sidebar opens
+
+			});
+			
+			$(".closeButton2").click(function()
+							
+			{				
+	            $(".sideBar").animate({left: '100%'}, function(){ $(".sideBar").css("display","none");});
+		        //$(".bodyClass").animate({left: '0%'});  //uncomment to return the whole page when the sidebar closes
+			});
+
+			
+			$("#open").click(function()
+			{
+				$(".modal").fadeToggle(function()
+				{
+					$(".box").fadeToggle();
+					$(".box").animate({top: '20%'});
+					$(".closeButton").fadeToggle();
+					$(".closeButton").animate({left: '72%'});
+				});
+	
+			});
+			
+			$(".closeButton").click(function()
+			{
+				$("#mo").fadeOut();
+				$(".box").fadeOut();
+			    $(".box").animate({top: '17%'});
+			    $(".closeButton").fadeToggle();
+				$(".closeButton").animate({left: '75%'});
+
+			});
+			
+			$(".modal").click(function()
+			{
+				$("#mo").fadeToggle();
+				$(".box").fadeToggle();
+				$(".box").animate({top: '17%'});
+				$(".closeButton").fadeToggle();
+				$(".closeButton").animate({left: '75%'});
+			});
+		
+		});
+		  
+	</script>
+	
+	<style>
+		
+		/*Custom ScrollBar */
+		/* width */
+		::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		/* Track */
+		::-webkit-scrollbar-track {
+			background: #f1f1f1; 
+				border-radius: 5px;
+
+		}
+
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: rgba(52,114,18,0.80);; 
+				border-radius: 5px;
+
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background:rgba(52,114,18,1.00); 
+		}
+		
+		body {
+			overflow: hidden;
+		}
+		
+		.bodyClass {
+			
+			overflow: auto;
+			left:0;
+			width:100%;
+			height:100%;
+			z-index: -50;
+			position: absolute;
+		}
+
+		/*---------------- modal CSS ----------------------- */
+		.modal {
+			background-color: rgba(0,0,0,0.80);
+			background-size: cover;
+			z-index: 50;
+			width:100%;
+			height:100%;
+			position: absolute;
+			margin: -8px;
+			overflow: hidden;			
+		}
+		
+		.box {
+			z-index: 100;
+			width:50%;
+			height:50%;
+			left:20%;
+		    top:17%;
+			right:20%;
+			bottom:20%;
+			background-color:rgba(243,243,243,1.00);
+			position: absolute;
+			padding:30px;
+			overflow:auto; 		
+			border-radius: 5px;
+		}
+		.closeButton {
+			z-index: 150;
+			top:18%;
+			left:75%;
+			position:absolute;
+			width:50px;
+			height:50px;
+			background-color: rgba(25,25,25,1.00);
+			border: hidden;
+			color:white;
+			font-size:20px;
+			text-align: center;
+			cursor: pointer;
+				
+		}
+		
+		.closeButton:hover {
+			background-color: rgba(51,139,16,1.00);
+			color:white;
+					
+		}
+		
+		.modalHeading {
+			width:100%;
+			font-size: 25px;
+			color:white;
+			margin-left: -20px;
+			margin-top:-20px;
+			background-color: rgba(73,73,73,1.00);
+			padding:20px;
+		}
+		.modalText {
+			width:80%;
+			font-size: 14px;
+
+			padding:20px;
+		}
+		
+		/* ------------------- SideBar CSS ------------------*/
+		
+		.sideBar {
+			display:none;
+			width:30%;
+			left:100%;
+			background-color: rgba(0,0,0,0.92);
+			font-size: 32px;
+			color:white;
+			height:100%;
+			position: absolute;
+			z-index: 250;
+			overflow: hidden;
+			margin-top: -8px;
+            box-shadow:-10px -10px 50px grey;  		
+		}
+		
+		.closeButton2 {
+			z-index: 350;
+			top:0%;
+			left:0%;
+			position:absolute;
+			width:70px;
+			height:70px;
+			background-color:rgba(255,255,255,1.00);
+			border: hidden;
+			color:black;
+			font-size:25px;
+			text-align: center;
+			cursor: pointer;
+				
+		}
+		
+		.closeButton2:hover {
+			background-color: rgba(51,139,16,1.00);
+			color:white;
+					
+		}
+		
+		.items {
+			height:80%;
+			width:80%;
+			padding-top: 100px;
+			padding-left: 20%;
+			
+		}
+		
+		
+		
+		a.mainMenu:link, a.mainMenu:visited {
+
+			background-color:white;
+			color: black;
+			padding:10px;
+			text-align: center;
+			text-decoration: none;
+			width:60%;
+			height:auto;
+			display: inline-block;
+			margin-bottom: 20px;
+			
+		}
+
+
+		a.mainMenu:hover, a.mainMenu:active {
+			
+			color: black;
+			padding:10px;
+			text-align: center;
+			text-decoration: none;
+			animation-name:bottomline;
+			animation-duration:1s;
+			animation-fill-mode: forwards;
+			display: inline-block;
+			border-radius: 0px;
+			 
+}		
+		
+		@keyframes bottomline 
+		{
+			0% {border-bottom-right-radius: 0px; 	background-color:white; }
+			100% {border-bottom-right-radius: 20px; background-color:rgba(51,139,16,1.00);}
+
+		}
+	
+	</style>
+
+<body>
+	
+	<div class="bodyClass">
+		
+			<button id="open">Show Modal</button>
+	
+			<button id="open2">Show SideBar</button>
+		
+		<p style="width:50px; height:100px; margin-left: :50%; padding: 600px">
+			ADASD
+		</p>
+		
+	</div>
+	
+	
+	<!--Sidebar  -->
+	<div class="sideBar">	
+		<button class="closeButton2">X</button>
+		
+		<div class="items">
+			<a class="mainMenu" href="#">Home</a>
+		    <a  class="mainMenu" href="#">Other</a>
+		</div>
+    </div>
+	
+	<!--Modal Divs -->
+	<div class="modal" id="mo"></div>
+	<button class="closeButton">X</button>
+	<div class="box">
+		<div class="modalHeading">Modal Box!</div>
+		<div class="modalText">
+		This is a Class Tag Div <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p> <p>adasdad</p>	
+		</div>
+	</div>
+	
+	
+
+</body>
+	
+
+</html>
